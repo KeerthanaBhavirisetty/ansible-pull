@@ -1,7 +1,7 @@
 - name: Setup of Web and application server
   become: yes
   gather_facts: yes
-  hosts: all
+  hosts: localhost
   roles:
    - webserver
    - appui
