@@ -1,0 +1,4 @@
+API_URL: https://s3-us-west-2.amazonaws.com/studentapi-cit/studentapi.war
+API_INIT: https://s3-us-west-2.amazonaws.com/studentapi-cit/studentapi-init
+
+API_DIR: /home/{{APP_USER}}/api

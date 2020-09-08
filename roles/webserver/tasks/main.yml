@@ -1,0 +1,17 @@
+- name: Installing webserver task
+  package:
+   name: httpd
+   state: present
+  notify: Restart HTTPD
+
+- name: copying content from server to node
+  copy:
+    src: studentapp.conf
+    dest: /etc/httpd/conf.d/studentapp.conf
+  notify: Restart HTTPD
+
+- name: Get index.html default page
+  get_url:
+    url: https://s3-us-west-2.amazonaws.com/studentapi-cit/index.html
+    dest: /var/www/html/index.html
+  notify: Restart HTTPD

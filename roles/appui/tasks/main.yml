@@ -1,0 +1,43 @@
+- name: Tomcat download and unarchive
+  unarchive:
+   src: "{{TOMCAT_URL}}"
+   dest: /home/{{APP_USER}}
+   remote_src: yes
+  become_user: "{{APP_USER}}"
+
+
+- name: download application and place in webapps folder
+  get_url:
+    url: "{{WEBAPP_URL}}"
+    dest: "{{TOMCAT_LOCATION}}/webapps"
+  become_user: "{{APP_USER}}"
+
+- name: Download sql jar
+  get_url:
+    url: "{{SQLJAR_URL}}"
+    dest: "{{TOMCAT_LOCATION}}/lib"
+  become_user: "{{APP_USER}}"
+
+- name: Configure the db connection 
+  template:
+   src: context.xml.j2
+   dest: "{{TOMCAT_LOCATION}}/conf/context.xml"
+  become_user: "{{APP_USER}}"
+
+- name: create a init script for tomcat
+  template:
+   src: files/tomcat-init
+   dest: /etc/init.d/tomcat
+   mode: 0755
+
+- name: Restart tomcat service
+  service:
+   name: tomcat
+   state: restarted
+   enabled: yes
+
+  
+
+
+
+   

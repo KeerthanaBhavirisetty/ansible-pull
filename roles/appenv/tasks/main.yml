@@ -1,0 +1,8 @@
+- name: Installing Java setup
+  package:
+   name: java
+   state: present
+
+- name: Settting up functional user
+  user: 
+   name: "{{APP_USER}}"
