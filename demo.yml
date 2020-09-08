@@ -1,5 +1,5 @@
 - name: Demo playbook for ansible pull
-  hosts: localhosts
+  hosts: localhost
   tasks:
     - name: Hello
       debug: 
