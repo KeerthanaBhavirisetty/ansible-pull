@@ -4,3 +4,5 @@
   hosts: localhost
   roles:
    - webserver
+   - appui
+   - app-api
