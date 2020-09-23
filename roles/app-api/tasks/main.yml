@@ -14,10 +14,10 @@
   blockinfile:
     path: /home/{{APP_USER}}/.bash_profile
     block: |
-     export DBUSER=dummy
-     export DBPASS=dummy
-     export DBHOST=dummy
-     export DBNAME=dummy
+     export DBUSER={{DBUSER}}
+     export DBPASS={{DBPASS}}
+     export DBHOST={{DBHOST}}
+     export DBNAME={{DBNAME}}
   become_user: "{{APP_USER}}"
 
 
